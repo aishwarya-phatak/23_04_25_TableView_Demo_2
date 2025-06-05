@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuItemTableViewCell" rowHeight="134" id="KGk-i7-Jjw" customClass="MenuItemTableViewCell" customModule="_3_04_25_TableView_Demo_2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="134"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="250" height="134"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YrQ-G6-2QP">
+                        <rect key="frame" x="10" y="10" width="100" height="114"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="aih-70-igQ"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAU-wx-TEr">
+                        <rect key="frame" x="130" y="10" width="100" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GwO-Bo-oBI">
+                        <rect key="frame" x="130" y="41" width="100" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ba1-Sx-IUS">
+                        <rect key="frame" x="130" y="72" width="100" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svn-aV-BBd">
+                        <rect key="frame" x="130" y="98" width="100" height="25"/>
+                        <color key="backgroundColor" systemColor="systemCyanColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="QdS-Tp-lk8"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Button">
+                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </buttonConfiguration>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="FAU-wx-TEr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="70x-BK-HnR"/>
+                    <constraint firstItem="svn-aV-BBd" firstAttribute="leading" secondItem="YrQ-G6-2QP" secondAttribute="trailing" constant="20" id="EoV-tv-Xpq"/>
+                    <constraint firstItem="svn-aV-BBd" firstAttribute="top" secondItem="Ba1-Sx-IUS" secondAttribute="bottom" constant="5" id="J7G-ze-NTv"/>
+                    <constraint firstItem="GwO-Bo-oBI" firstAttribute="top" secondItem="FAU-wx-TEr" secondAttribute="bottom" constant="10" id="Jyl-yI-2oo"/>
+                    <constraint firstItem="GwO-Bo-oBI" firstAttribute="leading" secondItem="YrQ-G6-2QP" secondAttribute="trailing" constant="20" id="O5t-DA-D0f"/>
+                    <constraint firstAttribute="trailing" secondItem="GwO-Bo-oBI" secondAttribute="trailing" constant="20" id="QmM-fG-HvW"/>
+                    <constraint firstAttribute="trailing" secondItem="Ba1-Sx-IUS" secondAttribute="trailing" constant="20" id="S5N-pP-cuq"/>
+                    <constraint firstItem="Ba1-Sx-IUS" firstAttribute="top" secondItem="GwO-Bo-oBI" secondAttribute="bottom" constant="10" id="UAM-Rh-msS"/>
+                    <constraint firstAttribute="trailing" secondItem="FAU-wx-TEr" secondAttribute="trailing" constant="20" id="WTS-yG-GoS"/>
+                    <constraint firstItem="Ba1-Sx-IUS" firstAttribute="leading" secondItem="YrQ-G6-2QP" secondAttribute="trailing" constant="20" id="ZJb-k1-Bhy"/>
+                    <constraint firstAttribute="trailing" secondItem="svn-aV-BBd" secondAttribute="trailing" constant="20" id="ZJo-Ro-gBn"/>
+                    <constraint firstItem="YrQ-G6-2QP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="byh-Un-ex3"/>
+                    <constraint firstItem="YrQ-G6-2QP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="nZd-Il-Caf"/>
+                    <constraint firstAttribute="bottom" secondItem="YrQ-G6-2QP" secondAttribute="bottom" constant="10" id="rnx-T0-35J"/>
+                    <constraint firstItem="FAU-wx-TEr" firstAttribute="leading" secondItem="YrQ-G6-2QP" secondAttribute="trailing" constant="20" id="zwn-CZ-QEi"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnMenuDetails" destination="svn-aV-BBd" id="WeH-rI-tec"/>
+                <outlet property="menuImageView" destination="YrQ-G6-2QP" id="AUp-KL-rVP"/>
+                <outlet property="menuItemDescription" destination="Ba1-Sx-IUS" id="XnP-n8-xK2"/>
+                <outlet property="menuItemName" destination="FAU-wx-TEr" id="tg0-4v-Bms"/>
+                <outlet property="menuItemPrice" destination="GwO-Bo-oBI" id="TOW-wG-gmK"/>
+            </connections>
+            <point key="canvasLocation" x="-1121" y="-73"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemCyanColor">
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
