@@ -39,6 +39,9 @@ class ViewController: UIViewController {
 }
 
 extension ViewController : UITableViewDataSource{
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Snacks Menu"
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         menuItems.count
@@ -71,9 +74,19 @@ extension ViewController : UITableViewDataSource{
         self.navigationController?.pushViewController(menuItemDetailsTableViewController,
                                     animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if(editingStyle == .delete){
+            self.menuItemsTableView.beginUpdates()
+            self.menuItemsTableView.deleteRows(at: [indexPath], with: .automatic)
+            self.menuItems.remove(at: indexPath.row)
+            self.menuItemsTableView.endUpdates()
+        }
+    }
 }
 
 extension ViewController : UITableViewDelegate{
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 136.0
     }
@@ -87,4 +100,5 @@ extension ViewController : UITableViewDelegate{
         self.navigationController?.pushViewController(menuItemDetailsTableViewController,
                                     animated: true)
     }
+    
 }
