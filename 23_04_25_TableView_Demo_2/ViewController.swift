@@ -21,6 +21,14 @@ class ViewController: UIViewController {
         MenuItem(menuItemName: "Dosa", menuItemPrice: 70.0, menuItemDescription: "Delicious")
     ]
     
+    var products : [Product] = [
+        Product(productId: 10, productName: "P1", productPrice: 100),
+        Product(productId: 20, productName: "P2", productPrice: 200),
+        Product(productId: 30, productName: "P3", productPrice: 300),
+        Product(productId: 40, productName: "P4", productPrice: 400),
+        Product(productId: 50, productName: "P5", productPrice: 500),
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initSettings()
@@ -35,6 +43,9 @@ class ViewController: UIViewController {
     func registerTableViewWithCell(){
         let uiNib = UINib(nibName: reuseIdentiferForMenuItemTableViewCell, bundle: nil)
         self.menuItemsTableView.register(uiNib, forCellReuseIdentifier: reuseIdentiferForMenuItemTableViewCell)
+        
+        let uiNib1 = UINib(nibName: "ProductTableViewCell", bundle: nil)
+        self.menuItemsTableView.register(uiNib1, forCellReuseIdentifier: "ProductTableViewCell")
     }
 }
 
@@ -44,24 +55,33 @@ extension ViewController : UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        menuItems.count
+        menuItems.count + products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let menuItemTableViewCell = self.menuItemsTableView.dequeueReusableCell(withIdentifier: reuseIdentiferForMenuItemTableViewCell, for: indexPath) as! MenuItemTableViewCell
         
-        menuItemTableViewCell.menuImageView.image = UIImage(named: "test_image_2")
-        menuItemTableViewCell.menuItemName.text = menuItems[indexPath.row].menuItemName
-        menuItemTableViewCell.menuItemPrice.text = "\(menuItems[indexPath.row].menuItemPrice)"
-        menuItemTableViewCell.menuItemDescription.text = menuItems[indexPath.row].menuItemDescription
-        
-        menuItemTableViewCell.btnMenuDetails.tag = indexPath.row
-        //tag to identify button
-        
-        menuItemTableViewCell.btnMenuDetails.addTarget(self,
-                                                       action: #selector(btnMenuDetailsClick),
-                                                       for: .touchUpInside)
-        return menuItemTableViewCell
+        if (indexPath.row % 2 == 0){
+            let menuItemTableViewCell = self.menuItemsTableView.dequeueReusableCell(withIdentifier: reuseIdentiferForMenuItemTableViewCell, for: indexPath) as! MenuItemTableViewCell
+            
+            menuItemTableViewCell.menuImageView.image = UIImage(named: "test_image_2")
+            menuItemTableViewCell.menuItemName.text = menuItems[indexPath.row/2].menuItemName
+            menuItemTableViewCell.menuItemPrice.text = "\(menuItems[indexPath.row/2].menuItemPrice)"
+            menuItemTableViewCell.menuItemDescription.text = menuItems[indexPath.row/2].menuItemDescription
+            
+            menuItemTableViewCell.btnMenuDetails.tag = indexPath.row
+            //tag to identify button
+            
+            menuItemTableViewCell.btnMenuDetails.addTarget(self,
+                                                           action: #selector(btnMenuDetailsClick),
+                                                           for: .touchUpInside)
+            return menuItemTableViewCell
+        } else {
+            let productTableViewCell = self.menuItemsTableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath) as! ProductTableViewCell
+            
+            productTableViewCell.productIdLabel.text = "\(products[indexPath.row/2].productId)"
+            productTableViewCell.productNameLabel.text = "\(products[indexPath.row/2].productName)"
+            return productTableViewCell
+        }
     }
     
     @objc func btnMenuDetailsClick(sender : UIButton){
@@ -69,7 +89,7 @@ extension ViewController : UITableViewDataSource{
             
         let menuItemDetailsTableViewController = self.storyboard?.instantiateViewController(withIdentifier:reuseIdentifierForMenuItemTableViewController) as! MenuItemDetailsViewController
         
-        menuItemDetailsTableViewController.container = menuItems[sender.tag]
+        menuItemDetailsTableViewController.container = menuItems[sender.tag/2]
         
         self.navigationController?.pushViewController(menuItemDetailsTableViewController,
                                     animated: true)
@@ -100,5 +120,4 @@ extension ViewController : UITableViewDelegate{
         self.navigationController?.pushViewController(menuItemDetailsTableViewController,
                                     animated: true)
     }
-    
 }
