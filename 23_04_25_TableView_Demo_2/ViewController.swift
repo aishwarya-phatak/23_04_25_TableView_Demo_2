@@ -27,6 +27,11 @@ class ViewController: UIViewController {
         Product(productId: 30, productName: "P3", productPrice: 300),
         Product(productId: 40, productName: "P4", productPrice: 400),
         Product(productId: 50, productName: "P5", productPrice: 500),
+        Product(productId: 10, productName: "P1", productPrice: 100),
+        Product(productId: 20, productName: "P2", productPrice: 200),
+        Product(productId: 30, productName: "P3", productPrice: 300),
+        Product(productId: 40, productName: "P4", productPrice: 400),
+        Product(productId: 50, productName: "P5", productPrice: 500),
     ]
     
     override func viewDidLoad() {
@@ -59,14 +64,15 @@ extension ViewController : UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //indexPath.row % 2 == 0  -- to display alternate products and menuitems
         
-        if (indexPath.row % 2 == 0){
+        if (((indexPath.row + 1) % 3) == 0){
             let menuItemTableViewCell = self.menuItemsTableView.dequeueReusableCell(withIdentifier: reuseIdentiferForMenuItemTableViewCell, for: indexPath) as! MenuItemTableViewCell
             
             menuItemTableViewCell.menuImageView.image = UIImage(named: "test_image_2")
-            menuItemTableViewCell.menuItemName.text = menuItems[indexPath.row/2].menuItemName
-            menuItemTableViewCell.menuItemPrice.text = "\(menuItems[indexPath.row/2].menuItemPrice)"
-            menuItemTableViewCell.menuItemDescription.text = menuItems[indexPath.row/2].menuItemDescription
+            menuItemTableViewCell.menuItemName.text = menuItems[(indexPath.row - 2)/3].menuItemName
+            menuItemTableViewCell.menuItemPrice.text = "\(menuItems[(indexPath.row - 2)/3].menuItemPrice)"
+            menuItemTableViewCell.menuItemDescription.text = menuItems[(indexPath.row - 2)/3].menuItemDescription
             
             menuItemTableViewCell.btnMenuDetails.tag = indexPath.row
             //tag to identify button
@@ -78,8 +84,9 @@ extension ViewController : UITableViewDataSource{
         } else {
             let productTableViewCell = self.menuItemsTableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath) as! ProductTableViewCell
             
-            productTableViewCell.productIdLabel.text = "\(products[indexPath.row/2].productId)"
-            productTableViewCell.productNameLabel.text = "\(products[indexPath.row/2].productName)"
+            productTableViewCell.productIdLabel.text = "\(products[indexPath.row - (indexPath.row/3)].productId)"
+            productTableViewCell.productNameLabel.text = 
+            "\(products[indexPath.row - (indexPath.row/3)].productName)"
             return productTableViewCell
         }
     }
@@ -89,7 +96,7 @@ extension ViewController : UITableViewDataSource{
             
         let menuItemDetailsTableViewController = self.storyboard?.instantiateViewController(withIdentifier:reuseIdentifierForMenuItemTableViewController) as! MenuItemDetailsViewController
         
-        menuItemDetailsTableViewController.container = menuItems[sender.tag/2]
+        menuItemDetailsTableViewController.container = menuItems[(sender.tag - 2)/3]
         
         self.navigationController?.pushViewController(menuItemDetailsTableViewController,
                                     animated: true)
